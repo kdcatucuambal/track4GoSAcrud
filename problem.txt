@@ -1,0 +1,8 @@
+1.    Generar un CRUD  a la tabla TBL_USUARIO con REACT.
+
+
+Campos: id_usuario, nombre_usuario, cedula_usuario, teléfono_usuario, mail_usuario.
+
+
+2. Empaquetar el ejercicio con docker, para desplegarlo con docker compose, la base de datos es la que desees.
+
