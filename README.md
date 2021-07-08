@@ -5,6 +5,11 @@ Example crud for track4GoSA using docker and docker-compose.
 - ReactJS
 - NestJS
 - Docker
+# Commands and Ports
+- docker-compose build .
+- docker-compose up .
+- localhost:3001 (back)
+- localhost:3000 (front)
 ## API REST USING NESTJS
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
