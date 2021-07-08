@@ -14,7 +14,7 @@ export class UserService implements UserInterface {
     }
 
     async findAll(): Promise<User[]> {
-        return this.userRepository.find();
+        return this.userRepository.find({ order: { name: "ASC" } });
     }
 
     async findById(id: string): Promise<User> {

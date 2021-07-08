@@ -9,8 +9,8 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'postgres',
-    // url: process.env.DATABASE_URL,
-    url: "postgres://postgres:postgres@localhost:5432/usersdb",
+    url: process.env.DATABASE_URL,
+    // url: "postgres://postgres:postgres@localhost:5432/usersdb",
     entities: [User],
     synchronize: true,
   }), UserModule],
