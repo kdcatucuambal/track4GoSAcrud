@@ -6,6 +6,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 })
 @Entity("tbl_usuario", { schema: "public" })
 export class User {
+  
   @PrimaryGeneratedColumn({ type: "integer", name: "id_user" })
   id: number;
 
@@ -24,4 +25,5 @@ export class User {
 
   @Column("character varying", { name: "email_user", length: 50 })
   email: string;
+  
 }
