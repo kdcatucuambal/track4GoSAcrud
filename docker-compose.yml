@@ -15,8 +15,8 @@ services:
             DATABASE_URL: postgres://userpostgres:passpostgres@postgres:5432/usersdb
             NODE_ENV: development
             PORT: 3001
-        volumes: 
-            - ./track4gosabe:/usr/src/app
+        # volumes: 
+         #   - ./track4gosabe:/usr/src/app
     frontend:
         container_name: t4gofrontend
         restart: always
@@ -29,8 +29,8 @@ services:
             - backend
         environment: 
             PROXY_API: http://backend:3001
-        volumes: 
-            - ./track4gosafe:/usr/src/app
+        # volumes: 
+          #  - ./track4gosafe:/usr/src/app
     postgres:
         container_name: postgres
         image: postgres:12
