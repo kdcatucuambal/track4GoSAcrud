@@ -16,6 +16,7 @@ services:
             PORT: 3001
         # volumes: 
         #     - ./track4gosabe:/usr/src/app
+         #   - ./track4gosabe:/usr/src/app
     frontend:
         container_name: t4gofrontend
         build: 
@@ -27,6 +28,10 @@ services:
             - backend
         volumes: 
             - ./track4gosafe:/usr/src/app
+        environment: 
+            PROXY_API: http://backend:3001
+        # volumes: 
+          #  - ./track4gosafe:/usr/src/app
     postgres:
         container_name: postgres
         image: postgres:12
