@@ -8,12 +8,13 @@ import { Toast } from 'primereact/toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUserAction } from '../../actions/user.action';
 import { useHistory } from 'react-router-dom';
+import {useAppDispatch} from "../../store/store";
 
 
 const NewUser = () => {
 
     const toast = useRef(null);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const state = useSelector((state: { stateuser: stateProps }) => state.stateuser);
 
     const history = useHistory();
@@ -54,8 +55,10 @@ const NewUser = () => {
             showError('La cédula ya está en uso');
             return;
         }
-        dispatch(createUserAction(user));
-        history.push("/");
+        dispatch(createUserAction(user)).then(user=>{
+            if (user) history.push("/");
+        });
+
     }
 
     return (

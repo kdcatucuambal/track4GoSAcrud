@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/User';
-import { ILike, Like, Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { CreateUserDto } from './dtos/UserDto';
 import { UserInterface } from './user.interface';
 
@@ -10,7 +10,6 @@ export class UserService implements UserInterface {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
-
 
   async findAll(): Promise<User[]> {
     return this.userRepository.find({ order: { name: 'ASC' } });
@@ -24,16 +23,21 @@ export class UserService implements UserInterface {
 
   async findMatchesByNameAndId(math: string): Promise<User[]> {
     return this.userRepository.find({
-      where: {
-        name: ILike(`%${math}%`),
-      },
+      where: [
+        { identificationCard: ILike(`%${math}%`) },
+        { name: ILike(`%${math}%`) },
+      ],
+      order: { name: 'ASC' },
     });
   }
 
   async findChunk(skip: number, take: number): Promise<User[]> {
-    return this.userRepository.find({ skip, take, order: { name: 'ASC' } });
+    return this.userRepository.find({
+      skip,
+      take,
+      order: { name: 'ASC' },
+    });
   }
-
 
   async save(user: CreateUserDto): Promise<User> {
     const instance = this.userRepository.create(user);
@@ -49,5 +53,14 @@ export class UserService implements UserInterface {
   async deleteById(id: string): Promise<{ deleted: number }> {
     const result = await this.userRepository.delete({ identificationCard: id });
     return { deleted: result.affected };
+  }
+
+  async getTotalRecords() {
+    return await this.userRepository.count();
+  }
+
+  getTester() {
+    console.log('Se entro para probar');
+    return 'Message of test from Kevin';
   }
 }

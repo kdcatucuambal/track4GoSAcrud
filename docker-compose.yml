@@ -3,7 +3,6 @@ version: "3.8"
 services: 
     backend:
         container_name: t4gobackend
-        restart: always
         build: 
             context: ./track4gosabe
             dockerfile: ./back.dockerfile
@@ -15,11 +14,10 @@ services:
             DATABASE_URL: postgres://userpostgres:passpostgres@postgres:5432/usersdb
             NODE_ENV: development
             PORT: 3001
-        volumes: 
-            - ./track4gosabe:/usr/src/app
+        # volumes: 
+        #     - ./track4gosabe:/usr/src/app
     frontend:
         container_name: t4gofrontend
-        restart: always
         build: 
             context: ./track4gosafe
             dockerfile: ./frontend.dockerfile
@@ -27,8 +25,6 @@ services:
             - "3000:3000"
         depends_on:
             - backend
-        environment: 
-            PROXY_API: http://backend:3001
         volumes: 
             - ./track4gosafe:/usr/src/app
     postgres:
@@ -42,4 +38,5 @@ services:
             POSTGRES_USER: userpostgres
         volumes:
             - ./pgdata:/var/lib/postgresql/data
+        
 

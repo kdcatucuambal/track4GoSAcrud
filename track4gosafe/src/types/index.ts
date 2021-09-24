@@ -1,5 +1,3 @@
-import { User } from "../interfaces/app.interface";
-
 export const ADD_USER = "ADD_USER";
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 export const ADD_USER_ERROR = "ADD_USER_ERROR";
@@ -21,8 +19,13 @@ export const ALERT_NULL = "ALERT_NULL";
 export const SHOW_ALERT = "SHOW_ALERT";
 export const HIDE_ALERT = "HIDE_ALERT";
 
+export const SET_TOTAL_RECORDS = "SET_TOTAL_RECORDS";
 
-export interface productAction{
-    type: string,
-    payload?: any
+export const SET_LAZY_PARAMS = "SET_LAZY_PARAMS";
+
+export const SET_AUX_QUERY = "SET_AUX_QUERY";
+
+export interface appAction {
+    type: string;
+    payload?: any;
 }
